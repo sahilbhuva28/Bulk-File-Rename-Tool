@@ -393,7 +393,7 @@ class FileRenamerApp(ctk.CTk):
         
         self.base_name_entry = ctk.CTkEntry(
             controls_frame,
-            placeholder_text="Enter base name (e.g., Image_)"
+            placeholder_text="Leave empty for number only (e.g., 1.jpg)"
         )
         self.base_name_entry.grid(row=0, column=1, sticky="ew", padx=5, pady=5)
         self.base_name_entry.bind('<KeyRelease>', self.update_preview_names)
@@ -856,7 +856,7 @@ class FileRenamerApp(ctk.CTk):
             self.preview_names_text.delete("1.0", tk.END)
             return
         
-        base_name = self.base_name_entry.get() or "File_"
+        base_name = self.base_name_entry.get()  # No default value, can be empty
         try:
             start_num = int(self.start_number_entry.get() or 1)
         except ValueError:
@@ -878,7 +878,7 @@ class FileRenamerApp(ctk.CTk):
         if not self.selected_files:
             return
         
-        base_name = self.base_name_entry.get() or "File_"
+        base_name = self.base_name_entry.get()  # No default value, can be empty
         try:
             start_num = int(self.start_number_entry.get() or 1)
         except ValueError:
